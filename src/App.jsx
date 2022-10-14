@@ -14,7 +14,9 @@ export function Form(props) {
     return (
         <div className='border border-1 p-10 rounded-2xl shadow-md shadow-red-100'>
             <form className='flex flex-col gap-y-2 max-w-2xl' onSubmit={handleSubmit} method='POST'>
-                <h1 className='text-2xl text-white font-sans mb-8 text-center italic'>Siap untuk bermain?</h1>
+                <h1 className='text-2xl text-white font-sans mb-8 text-center italic'>
+                    Siap untuk bermain <span className='text-pink-300 block'>dindaku sayang?</span>
+                </h1>
                 <input
                     type={'text'}
                     placeholder={'Masukkan nama anda'}
