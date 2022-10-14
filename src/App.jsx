@@ -49,7 +49,7 @@ export default function App() {
         <main className='bg-primary min-h-screen w-full antialiased'>
             <div className='flex flex-col md:flex-row justify-center md:pt-24 items-center'>
                 <div>
-                    <img src='/public/batu-gunting-kertas.png' className='h-25 w-25' />
+                    <img src='/batu-gunting-kertas.png' className='h-25 w-25' />
                 </div>
                 <div className='m-5'>
                     <Form setPlayerName={setPlayerName} setIsPlaying={setIsPlaying} />
@@ -71,8 +71,8 @@ export const PlayGame = () => {
     // save history into stack
     const [winnerHistory, setWinnerHistory] = useState([]);
 
-    const computerPic = '/public/computer-mikir.png';
-    const randomPicURL = ['/public/batu.png', '/public/gunting.png', '/public/kertas.png'];
+    const computerPic = '/computer-mikir.png';
+    const randomPicURL = ['/batu.png', '/gunting.png', '/kertas.png'];
 
     // first load get playername from localstorage
 
@@ -85,9 +85,9 @@ export const PlayGame = () => {
     const [winner, setWinner] = useState('');
 
     const choiceMap = {
-        batu: '/public/batu.png',
-        gunting: '/public/gunting.png',
-        kertas: '/public/kertas.png',
+        batu: '/batu.png',
+        gunting: '/gunting.png',
+        kertas: '/kertas.png',
     };
 
     const handlePlayerChoice = (choice) => {
@@ -150,17 +150,17 @@ export const PlayGame = () => {
                             </div>
                             <div className='flex gap-x-2 items-center'>
                                 <img
-                                    src='/public/batu.png'
+                                    src='/batu.png'
                                     className='h-28 w-20 hover:cursor-pointer hover:scale-125 transition-all duration-150 ease-in-out'
                                     onClick={() => handlePlayerChoice('batu')}
                                 />
                                 <img
-                                    src='/public/kertas.png'
+                                    src='/kertas.png'
                                     className='h-28 w-20 hover:cursor-pointer hover:scale-125 transition-all duration-150 ease-in-out'
                                     onClick={() => handlePlayerChoice('kertas')}
                                 />
                                 <img
-                                    src='/public/gunting.png'
+                                    src='/gunting.png'
                                     className='h-28 w-20 hover:cursor-pointer hover:scale-125 transition-all duration-150 ease-in-out'
                                     onClick={() => handlePlayerChoice('gunting')}
                                 />
