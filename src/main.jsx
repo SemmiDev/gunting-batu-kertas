@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import App from './App.jsx';
-import PlayGame from './components/PlayGame.jsx';
-import History from './components/History.jsx';
+import App, { PlayGame, History } from './App.jsx';
 
 import './index.css';
 
