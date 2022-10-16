@@ -307,19 +307,27 @@ export function PlayGame() {
 
 // History akan di eksekusi ketika user mengakses halaman `/history`
 export function History() {
-    const history = JSON.parse(localStorage.getItem('winnerHistory')); // stack
+    // pertama kita ambil data history pemenangnya dari local storage
+    const history = JSON.parse(localStorage.getItem('winnerHistory'));
+    // kalau tak jumpe datanya, bakal di redirect/alihkan ke halaman play
     if (!history) {
         window.location.href = '/play';
     }
 
+    // kita bikin variable untuk nyimpen data/state total skor komputer (berapa x komputer menang)
     const [totalScoreComputer, setTotalScoreComputer] = useState(0);
+    // kita bikin variable untuk nyimpen data/state total skor pemain (berapa x pemain menang)
     const [totalScorePlayer, setTotalScorePlayer] = useState(0);
 
+    // setelah history di render dan data dari local storage didapatkan, maka
     useEffect(() => {
+        // kita looping isi data history
         history.forEach((item) => {
+            // kalau jumpa komputer, maka total score komputer kita tambah 1
             if (item.winner === 'Komputer') {
                 setTotalScoreComputer((prev) => prev + 1);
             } else {
+            // kalau tidak, maka total score player kita tambah 1
                 setTotalScorePlayer((prev) => prev + 1);
             }
         });
@@ -327,14 +335,15 @@ export function History() {
 
     const [no, setNo] = useState(1);
 
+    // kalau tombol home ditekan maka halaman akan diarahkan ke `/`
     const handleHome = () => {
         localStorage.removeItem('winnerHistory');
         localStorage.removeItem('playerName');
         window.location.href = '/';
     };
 
+    // ini fungsi format waktu untuk ngubah dari 2021-08-20T08:00:00.000Z menjadi 20/08/2021 15:00:00
     function formatWaktu(waktu) {
-        // 2021-08-20T08:00:00.000Z -> 20/08/2021 15:00:00
         const date = new Date(waktu);
         const tanggal = date.getDate();
         const bulan = date.getMonth() + 1;
@@ -376,6 +385,8 @@ export function History() {
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- history tadi kita map/loop satu persatu untuk ditampilkan dalam tabel -->
+                            <!-- .reverse() kita gunakan untuk menampikan data dari atas/terakhir masuk ke historynya, karena kita pake stack (LIFO) -->
                             {history
                                 .map((item, index) => (
                                     <tr key={index}>
